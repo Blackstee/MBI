@@ -1,0 +1,40 @@
+int pinCorrection = 3;
+int pinUpper = 5;
+int pinLower = 6;
+int b = 0; // переменная для задания яркости 
+int fadeAmount = 20; // шаг изменения яркости 
+int val; //здесь будет храниться принятый символ 
+
+void setup() 
+{ 
+  Serial1.begin(9600); //установка порта на скорость 9600 бит/сек 
+  pinMode(pinCorrection, OUTPUT); //устанавливаем 13 контакт в режим вывода 
+  pinMode(pinUpper, OUTPUT);
+  pinMode(pinLower, OUTPUT);
+} 
+
+void loop() 
+{ 
+  int b1=0;
+  int d=10; 
+  if (Serial1.available()) { //если есть принятый символ, 
+  val = Serial1.read(); // то читаем его и сохраняем в val 
+
+  if (val == 'w'&b<224 ) { 
+  b +=fadeAmount; // изменяем значение яркости 
+  }
+  
+  if (val == 's' &b>19) { // если принят симовол 's', 
+  b-= fadeAmount; 
+  } 
+
+  if (val == 'i'&b1<224 ) 
+  { 
+    b1 +=fadeAmount; // изменяем значение яркости 
+  }  
+} 
+analogWrite(pinCorrection, b1); // устанавливаем яркость brightness на выводе ledPin 
+analogWrite(pinUpper,b);
+analogWrite(pinLower,b);
+delay(d); // задержка для большей видимости эффекта 
+}
