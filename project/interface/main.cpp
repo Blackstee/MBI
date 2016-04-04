@@ -1,21 +1,19 @@
-
-
 #include <SFML/Graphics.hpp>
 
 using namespace sf;//включаем пространство имен sf, чтобы постоянно не писать sf::
 int main()
 {
-	RenderWindow window(sf::VideoMode(640, 480), "Helicopter"); //увеличили для удобства размер окна
+	RenderWindow window(sf::VideoMode(894, 507), "Helicopter"); //увеличили для удобства размер окна
 
 	Image heroimage; //создаем объект Image (изображение)
-	heroimage.loadFromFile("images/снимок.png");//загружаем в него файл
+	heroimage.loadFromFile("images/int.png");//загружаем в него файл
 
 	Texture herotexture;//создаем объект Texture (текстура)
 	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
 
 	Sprite herosprite;//создаем объект Sprite(спрайт)
 	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
-	herosprite.setPosition(50, 25);//задаем начальные координаты появления спрайта
+	herosprite.setPosition(0, 0);//задаем начальные координаты появления спрайта
 
 	while (window.isOpen())
 	{
@@ -33,3 +31,4 @@ int main()
 
 	return 0;
 }
+
